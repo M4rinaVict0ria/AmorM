@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Curina 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.card {
+  background: rgba(0,0,0,0.35);
+  padding: 30px;
+  border-radius: 25px;
+  width: 320px;
+  text-align: center;
+  position: relative;
+}
+
+button {
+  margin: 15px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#sim {
+  background: #4CAF50;
+  color: white;
+}
+
+#nao {
+  background: #ff4d6d;
+  color: white;
+  position: absolute;
+}
+
+.aviso {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ffdede;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h2>quer ficar cmg pra sempre?</h2>
+
+  <button id="sim" onclick="responderSim()">Sim 🥰</button>
+  <button id="nao" onmouseover="fugir()">Não 🙄</button>
+
+  <div class="aviso" id="aviso"></div>
+</div>
+
+<script>
+function fugir() {
+  const btn = document.getElementById("nao");
+  const card = document.querySelector(".card");
+
+  const maxX = card.offsetWidth - btn.offsetWidth;
+  const maxY = card.offsetHeight - btn.offsetHeight;
+
+  btn.style.left = Math.random() * maxX + "px";
+  btn.style.top  = Math.random() * maxY + "px";
+
+  document.getElementById("aviso").innerText =
+    "⚠️ não pode negar meu pedido curina 😌💖";
+}
+
+function responderSim() {
+  const audio = document.getElementById("musica");
+  audio.play();
+
+  alert("eu sabia q vc ia aceitar pq eu so perfeita tudo q vc sempre mereceu 😍💖");
+
+  setTimeout(() => {
+    window.location.href = "pagina2.html";
+  }, 500);
+}
+</script>
+
+</body>
+</html>
