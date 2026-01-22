@@ -26,9 +26,18 @@ body {
   position: relative;
 }
 
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+  height: 60px;
+}
+
 button {
-  margin: 15px;
-  padding: 12px 20px;
+  width: 110px;
+  padding: 12px 0;
   border-radius: 30px;
   border: none;
   font-size: 16px;
@@ -44,12 +53,17 @@ button {
   background: #ff4d6d;
   color: white;
   position: absolute;
+  right: 0;
 }
 
+/* caixinha de aviso */
 .aviso {
-  margin-top: 15px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
   font-size: 14px;
-  color: #ffdede;
+  display: none;
 }
 </style>
 </head>
@@ -63,8 +77,10 @@ button {
 <div class="card">
   <h2>quer ficar cmg pra sempre?</h2>
 
-  <button id="sim" onclick="responderSim()">Sim 🥰</button>
-  <button id="nao" onmouseover="fugir()">Não 🙄</button>
+  <div class="botoes">
+    <button id="sim" onclick="responderSim()">Sim 🥰</button>
+    <button id="nao" onmouseover="fugir()">Não 🙄</button>
+  </div>
 
   <div class="aviso" id="aviso"></div>
 </div>
@@ -72,23 +88,24 @@ button {
 <script>
 function fugir() {
   const btn = document.getElementById("nao");
-  const card = document.querySelector(".card");
+  const area = document.querySelector(".botoes");
 
-  const maxX = card.offsetWidth - btn.offsetWidth;
-  const maxY = card.offsetHeight - btn.offsetHeight;
+  const maxX = area.offsetWidth - btn.offsetWidth;
+  const maxY = area.offsetHeight - btn.offsetHeight;
 
   btn.style.left = Math.random() * maxX + "px";
   btn.style.top  = Math.random() * maxY + "px";
 
-  document.getElementById("aviso").innerText =
-    "⚠️ não pode negar meu pedido curina 😌💖";
+  const aviso = document.getElementById("aviso");
+  aviso.style.display = "block";
+  aviso.innerText = " não pode negar meu pedido curina e nem fala mais cmg hj aparece p mim q vc negou ta 👍";
 }
 
 function responderSim() {
   const audio = document.getElementById("musica");
   audio.play();
 
-  alert("eu sabia q vc ia aceitar pq eu so perfeita tudo q vc sempre mereceu 😍💖");
+  alert("eu sabia q vc ia aceitar pq eu sou perfeita tudo q vc sempre mereceu 😍💖");
 
   setTimeout(() => {
     window.location.href = "pagina2.html";
